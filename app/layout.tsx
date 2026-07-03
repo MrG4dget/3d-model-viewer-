@@ -12,8 +12,6 @@ export const metadata: Metadata = {
   description: 'A simple self-hosted web app to upload, review, measure, annotate and share textured 3D models.',
 };
 
-import Script from 'next/script';
-
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`${inter.variable}`}>

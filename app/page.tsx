@@ -110,9 +110,11 @@ export default function OwnerDashboard() {
         .build();
       picker.setVisible(true);
     } catch (err: any) {
-      console.error(err);
-      setUploadError('Failed to connect to Google Drive.');
+      if (err?.code !== "auth/popup-closed-by-user" && !err?.message?.includes("popup-closed-by-user")) console.error(err);
       setIsDriveLoading(false);
+      if (err.code !== 'auth/popup-closed-by-user' && !err.message?.includes('popup-closed-by-user')) {
+        setUploadError(err.message || 'Failed to connect to Google Drive.');
+      }
     }
   };
 
@@ -129,7 +131,7 @@ export default function OwnerDashboard() {
       const file = new File([blob], fileName, { type: blob.type || 'application/octet-stream' });
       await processUpload(file);
     } catch (err: any) {
-      console.error(err);
+      if (err?.code !== "auth/popup-closed-by-user" && !err?.message?.includes("popup-closed-by-user")) console.error(err);
       setUploadError(err.message || 'Failed to download or import from Google Drive.');
     } finally {
       setIsDriveLoading(false);
