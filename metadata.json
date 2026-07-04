@@ -1,6 +1,0 @@
-{
-  "name": "3D Model Review App",
-  "description": "A simple web app to upload, measure, annotate, and share textured 3D models via password-protected links.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
